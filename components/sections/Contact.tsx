@@ -1,8 +1,7 @@
 import Button from "@/components/ui/Button";
 import { SITE } from "@/lib/data";
 
-const MAP_PLACEHOLDER =
-  "/images/map.png";
+const MAP_PLACEHOLDER = "images/map.png";
 
 const CONTACT_DETAILS = [
   {
