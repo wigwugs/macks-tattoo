@@ -1,6 +1,12 @@
 import Section from "@/components/ui/Section";
 import { SERVICES } from "@/lib/data";
 
+const SERVICE_ICON_MAP: Record<string, string> = {
+  ink_pen: "🖋️",
+  brush: "🪄",
+  potted_plant: "💎",
+};
+
 export default function Services() {
   return (
     <Section id="services">
@@ -19,11 +25,8 @@ export default function Services() {
             key={service.name}
             className="bg-surface-low thin-border p-10 md:p-12 group hover:border-gold/40 transition-colors duration-500"
           >
-            <span
-              className="material-symbols-outlined text-gold text-4xl mb-6 block"
-              aria-hidden="true"
-            >
-              {service.icon}
+            <span className="text-gold text-4xl mb-6 block" aria-hidden="true">
+              {SERVICE_ICON_MAP[service.icon] ?? service.icon}
             </span>
             <h3 className="font-serif text-[32px] font-normal text-on-surface mb-4">
               {service.name}

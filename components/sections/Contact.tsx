@@ -2,7 +2,13 @@ import Button from "@/components/ui/Button";
 import { SITE } from "@/lib/data";
 
 const MAP_PLACEHOLDER =
-  "images/map.png";
+  "/images/Map.png";
+
+const CONTACT_ICON_MAP: Record<string, string> = {
+  location_on: "📍",
+  call: "📞",
+  schedule: "🕒",
+};
 
 const CONTACT_DETAILS = [
   {
@@ -36,7 +42,7 @@ export default function Contact() {
         <div className="relative overflow-hidden border border-white/10 group aspect-video md:aspect-auto md:h-[480px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="images/map.png"
+            src={MAP_PLACEHOLDER}
             alt="Studio map — 146 N 100 W, Cedar City, UT 84720"
             className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:translate-y-[-3px] transition-opacity transition-transform duration-500"
             loading="lazy"
@@ -70,11 +76,8 @@ export default function Contact() {
           <address className="not-italic space-y-6">
             {CONTACT_DETAILS.map((detail) => (
               <div key={detail.label} className="flex items-start gap-4">
-                <span
-                  className="material-symbols-outlined text-gold mt-0.5 shrink-0"
-                  aria-hidden="true"
-                >
-                  {detail.icon}
+                <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">
+                  {CONTACT_ICON_MAP[detail.icon] ?? detail.icon}
                 </span>
                 <div>
                   <p className="text-xs font-semibold tracking-widest uppercase text-gold mb-1">

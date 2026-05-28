@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
 import { SITE } from "@/lib/data";
 
@@ -11,33 +14,65 @@ const HERO_FLOATING = [
     src: "/images/hero/illustration-leaves.png",
     alt: "",
     className:
-      "absolute top-[8%] left-[4%] w-28 -rotate-12 z-20 opacity-70 grayscale",
+      "absolute top-[8%] left-[4%] w-28 z-20 opacity-70 grayscale",
+    baseTransform: "rotate(-12deg)",
+    speed: 0.35,
   },
   {
     src: "/images/hero/illustration-butterfly.png",
     alt: "",
     className:
-      "absolute top-[4%] right-[8%] w-36 rotate-6 z-20 opacity-70 grayscale",
+      "absolute top-[4%] right-[8%] w-36 z-20 opacity-70 grayscale",
+    baseTransform: "rotate(6deg)",
+    speed: 0.45,
   },
   {
     src: "/images/hero/illustration-sword.png",
     alt: "",
-    className:
-      "absolute top-1/2 -translate-y-1/2 right-0 w-24 z-30 drop-shadow-2xl",
+    className: "absolute top-1/2 right-0 w-24 z-30 drop-shadow-2xl",
+    baseTransform: "translateY(-50%)",
+    speed: 0.3,
   },
   {
     src: "/images/hero/illustration-shark.png",
     alt: "",
-    className: "absolute bottom-[12%] left-[4%] w-44 -rotate-6 z-20",
+    className: "absolute bottom-[12%] left-[4%] w-44 z-20",
+    baseTransform: "rotate(-6deg)",
+    speed: 0.4,
   },
   {
     src: "/images/hero/illustration-spider.png",
     alt: "",
-    className: "absolute bottom-[8%] right-[14%] w-28 rotate-12 z-20",
+    className: "absolute bottom-[8%] right-[14%] w-28 z-20",
+    baseTransform: "rotate(12deg)",
+    speed: 0.5,
   },
 ];
 
 export default function Hero() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    let rafId = 0;
+
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = window.requestAnimationFrame(() => {
+        setScrollY(window.scrollY);
+      });
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  const centerOffset = Math.min(scrollY * 0.04, 18);
+
   return (
     <header
       className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-background px-5 md:px-16"
@@ -94,7 +129,11 @@ export default function Hero() {
             {/* Central circular image */}
             <div
               className="absolute z-10 w-[78%] max-w-480px"
-              style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+              style={{
+                top: "50%",
+                left: "50%",
+                transform: `translate(-50%, calc(-50% + ${centerOffset}px))`,
+              }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -113,6 +152,12 @@ export default function Hero() {
                 src={img.src}
                 alt={img.alt}
                 className={img.className}
+                style={{
+                  transform: `${img.baseTransform} translateY(${Math.min(
+                    scrollY * img.speed * 0.05,
+                    24
+                  )}px)`,
+                }}
                 loading="lazy"
               />
             ))}
