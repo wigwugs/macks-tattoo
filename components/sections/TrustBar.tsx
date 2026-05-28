@@ -1,11 +1,5 @@
 import { TRUST_BADGES } from "@/lib/data";
 
-const ICON_MAP: Record<string, string> = {
-  star: "⭐️",
-  thumb_up: "👍",
-  verified: "✅",
-};
-
 export default function TrustBar() {
   return (
     <div
@@ -16,7 +10,7 @@ export default function TrustBar() {
         {TRUST_BADGES.map((badge) => (
           <li key={badge.text} className="flex items-center gap-3 opacity-70">
             <span className="text-gold text-xl" aria-hidden="true">
-              {ICON_MAP[badge.icon] ?? badge.icon}
+              {badge.icon}
             </span>
             <span className="text-xs font-semibold tracking-widest uppercase text-on-surface">
               {badge.text}

@@ -18,28 +18,28 @@ export const SITE = {
 };
 
 export const TRUST_BADGES = [
-  { icon: "star", text: "4.7 Stars on Google (297)" },
-  { icon: "thumb_up", text: "94% Recommend on Facebook (402)" },
-  { icon: "verified", text: "Licensed & Certified Studio" },
+  { icon: "⭐️", text: "4.7 Stars on Google (297)" },
+  { icon: "👍", text: "94% Recommend on Facebook (402)" },
+  { icon: "✅", text: "Licensed & Certified Studio" },
 ];
 
 export const SERVICES = [
   {
-    icon: "ink_pen",
+    icon: "🖋️",
     name: "Tattoos",
     description:
       "Custom black & grey realism, illustrative color, and fine-line work tailored to your story.",
     items: ["Black & Grey", "Full Color", "Consultation"],
   },
   {
-    icon: "brush",
+    icon: "🪄",
     name: "Permanent Makeup",
     description:
       "Enhance your natural features with precision microblading, lip blushing, and eyeliner.",
     items: ["Microblading", "Lip Blush", "Touch-ups"],
   },
   {
-    icon: "potted_plant",
+    icon: "💎",
     name: "Piercings",
     description:
       "Professional body piercing using surgical-grade titanium and high-end jewelry.",

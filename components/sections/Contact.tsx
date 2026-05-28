@@ -2,29 +2,23 @@ import Button from "@/components/ui/Button";
 import { SITE } from "@/lib/data";
 
 const MAP_PLACEHOLDER =
-  "/images/Map.png";
-
-const CONTACT_ICON_MAP: Record<string, string> = {
-  location_on: "📍",
-  call: "📞",
-  schedule: "🕒",
-};
+  "/images/map.png";
 
 const CONTACT_DETAILS = [
   {
-    icon: "location_on",
+    icon: "📍",
     label: "Address",
     content: SITE.address,
     href: SITE.googleMapsUrl,
   },
   {
-    icon: "call",
+    icon: "📞",
     label: "Phone",
     content: SITE.phone,
     href: `tel:${SITE.phone.replace(/\D/g, "")}`,
   },
   {
-    icon: "schedule",
+    icon: "🕒",
     label: "Hours",
     lines: SITE.hours.map((h) => `${h.label}: ${h.time}`),
   },
@@ -77,7 +71,7 @@ export default function Contact() {
             {CONTACT_DETAILS.map((detail) => (
               <div key={detail.label} className="flex items-start gap-4">
                 <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">
-                  {CONTACT_ICON_MAP[detail.icon] ?? detail.icon}
+                  {detail.icon}
                 </span>
                 <div>
                   <p className="text-xs font-semibold tracking-widest uppercase text-gold mb-1">
@@ -87,8 +81,8 @@ export default function Contact() {
                     <a
                       href={detail.href}
                       className="text-[18px] text-on-surface hover:text-gold transition-colors"
-                      target={detail.icon === "location_on" ? "_blank" : undefined}
-                      rel={detail.icon === "location_on" ? "noopener noreferrer" : undefined}
+                      target={detail.label === "Address" ? "_blank" : undefined}
+                      rel={detail.label === "Address" ? "noopener noreferrer" : undefined}
                     >
                       {detail.content}
                     </a>
