@@ -36,7 +36,7 @@ export default function Contact() {
         <div className="relative overflow-hidden border border-white/10 group aspect-video md:aspect-auto md:h-[480px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={images/map.png}
+            src={"images/map.png"}
             alt="Studio map — 146 N 100 W, Cedar City, UT 84720"
             className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:translate-y-[-3px] transition-opacity transition-transform duration-500"
             loading="lazy"
