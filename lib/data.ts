@@ -49,6 +49,13 @@ export const SERVICES = [
 
 export const REVIEWS = [
   {
+    initials: "KC",
+    name: "Kaylee Covington",
+    role: "Facebook Review",
+    quote:
+      "Mack does truly amazing work! I've seen the others and they are also amazing. But I've personally been under Mack's needle and he has a gentle touch, and the quality he puts into the detail is immaculate. 10 out of 10 recommend.",
+  },
+  {
     initials: "JS",
     name: "Jonathan Sterling",
     role: "Local Client",
