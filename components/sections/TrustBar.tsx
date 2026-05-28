@@ -1,9 +1,9 @@
 import { TRUST_BADGES } from "@/lib/data";
 
 const ICON_MAP: Record<string, string> = {
-  star: "star",
-  thumb_up: "thumb_up",
-  verified: "verified",
+  star: "⭐️",
+  thumb_up: "👍",
+  verified: "✅",
 };
 
 export default function TrustBar() {
