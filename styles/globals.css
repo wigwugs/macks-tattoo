@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0A0A0A;
+    color: #e2e2e2;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #C5A059;
+    color: #0A0A0A;
+  }
+
+  /* Hide scrollbar for review carousel while keeping functionality */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  .thin-border {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-nav {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Gallery image hover: lift + full color */
+  .portfolio-img {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.5s ease;
+    filter: grayscale(20%);
+  }
+  .portfolio-img:hover {
+    transform: scale(1.04);
+    filter: grayscale(0%);
+    z-index: 10;
+  }
+
+  /* Subtle gold glow used on hero badge */
+  .gold-glow {
+    box-shadow: 0 0 80px rgba(197, 160, 89, 0.12);
+  }
+}
